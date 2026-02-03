@@ -12,18 +12,19 @@ Ingest your code (local folder, ZIP upload, or GitHub repo), then ask questions 
 
 - **Python 3.x** – for the backend
 - **Node.js** (LTS) – for the frontend
-- **Git** – required only if you use “ingest from repo” (GitHub URL)
+- **Git** – required only if you use "ingest from repo" (GitHub URL)
+- **Windows only:** **Microsoft C++ Build Tools** – recommended before installing backend requirements (needed for ChromaDB). Install from [Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) and choose the **"Desktop development with C++"** workload.
 
 ## API keys and environment variables
 
-Create `backend/.env` with the variables below. At least one of `OPENAI_API_KEY` or `DEEPSEEK_API_KEY` is needed for chat. Embeddings use ChromaDB’s default (no extra key).
+Create `backend/.env` with the variables below. At least one of `OPENAI_API_KEY` or `DEEPSEEK_API_KEY` is needed for chat. Embeddings use ChromaDB's default (no extra key).
 
 ### Backend (`backend/.env`)
 
 | Variable             | Required              | Purpose                                                                 |
 | -------------------- | --------------------- | ----------------------------------------------------------------------- |
-| `OPENAI_API_KEY`     | For “ChatGPT” model   | Used when the user selects ChatGPT in chat                              |
-| `DEEPSEEK_API_KEY`   | For “DeepSeek” model  | Used when the user selects DeepSeek (default)                            |
+| `OPENAI_API_KEY`     | For "ChatGPT" model   | Used when the user selects ChatGPT in chat                              |
+| `DEEPSEEK_API_KEY`   | For "DeepSeek" model  | Used when the user selects DeepSeek (default)                            |
 | `DEEPSEEK_API_BASE`  | Optional              | Default `https://api.deepseek.com/v1`                                    |
 | `BACKEND_PORT`       | Optional              | Default `8000`                                                           |
 
@@ -40,7 +41,8 @@ All commands below are from the **`backend/`** directory.
 1. Create and activate a virtual environment:
    - **Windows:** `python -m venv venv` then `venv\Scripts\activate`
    - **macOS/Linux:** `python3 -m venv venv` then `source venv/bin/activate`
-2. Install dependencies: `pip install -r requirements.txt`
+2. **(Windows)** Install [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) and select the **"Desktop development with C++"** workload, then install dependencies: `pip install -r requirements.txt`  
+   **(macOS/Linux)** Install dependencies: `pip install -r requirements.txt`
 3. Create a `.env` file in `backend/` with the variables listed above (see [backend/config.py](backend/config.py)).
 4. Start the server: `python main.py`  
    Or: `uvicorn main:app --host 0.0.0.0 --port 8000`  
@@ -63,4 +65,6 @@ All commands below are from the **`rag_code/`** directory.
 2. Start the **frontend** (from `rag_code/`): `npm run dev`
 3. Open **http://localhost:3055** in your browser.
 4. Ingest a codebase (local path, ZIP upload, or GitHub repo URL), then ask questions in the chat.
-#
+
+## vedio link
+https://www.loom.com/share/d86ecf1f7e704783bf41950b823cc79b
